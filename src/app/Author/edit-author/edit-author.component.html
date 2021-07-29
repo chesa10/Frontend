@@ -1,0 +1,26 @@
+<form [formGroup]="addAuthorForm" (ngSubmit)="onSubmit()" >
+
+
+  <input type="hidden" class="form-control" formControlName="authorId">
+
+  <div class="form-group col-12">
+    <label for="name" class="form-label">First Name</label>
+    <input type="text" class="form-control" formControlName="firstName">
+    <span class="error-block" *ngIf="!firstName.valid && (firstName.touched || authorSubmitted)">
+        Please provide first name
+    </span>
+  </div>
+
+  <div class="form-group col-12">
+    <label for="name" class="form-label">Last Name</label>
+    <input type="text" class="form-control" formControlName="lastName">
+    <span class="error-block" *ngIf="!lastName.valid && (lastName.touched || authorSubmitted)">
+        Please provide last name
+    </span>
+  </div>
+
+  <div class="form-group col-12">
+    <button type="submit" class="btn btn-primary btn-space">Add Author</button>
+  </div>
+
+</form>

@@ -1,0 +1,48 @@
+
+  <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()" >
+
+    <input type="hidden" class="form-control" formControlName="authorId">
+
+    <div class="form-group col-12">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input type="text" class="form-control" formControlName="isbn">
+      <span class="error-block" *ngIf="!isbn.valid && (isbn.touched || bookSubmitted)">
+          Please provide isbn
+      </span>
+    </div>
+
+    <div class="form-group col-12">
+      <label for="bookTitle" class="form-label">Book title</label>
+      <input type="text" class="form-control" formControlName="bookTitle">
+      <span *ngIf="!bookTitle.valid && (bookTitle.touched || bookSubmitted)" class="error-block">
+          <span *ngIf="bookTitle.hasError('required')">
+              Please provide book Title
+          </span>
+      </span>
+    </div>
+
+    <div class="form-group col-12">
+      <label for="totalPages" class="form-label">Total Pages</label>
+      <input type="text" class="form-control" formControlName="totalPages">
+      <span *ngIf="!totalPages.valid && (totalPages.touched || bookSubmitted)" class="error-block">
+        <span *ngIf="totalPages.errors['required']">
+            Please provide total Pages
+        </span>
+    </span>
+    </div>
+
+    <div class="form-group col-12">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" formControlName="description">
+      <span *ngIf="!description.valid && (description.touched || bookSubmitted)" class="error-block">
+        <span *ngIf="description.errors['required']">
+            Please provide description
+        </span>
+      </span>
+    </div>
+
+    <div class="form-group col-12">
+      <button type="submit" class="btn btn-primary btn-space ">Save</button>
+    </div>
+
+  </form>
